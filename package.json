@@ -3,6 +3,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@nestjs/config": "^4.0.2",
     "@nx/js": "^21.2.0",
     "eslint": "~8.48.0",
     "webpack-cli": "^6.0.1"
