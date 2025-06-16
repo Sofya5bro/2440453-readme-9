@@ -35,7 +35,7 @@ function validateDBConfig(conf: MongoConfig) : void {
 function getMongoDBConfig() : MongoConfig {
   const dbConf : MongoConfig = {
     host: process.env.MONGO_HOST,
-    port: parseInt(process.env.PORT || `${DEFAULT_PORT}`, 10),
+    port: parseInt(process.env.PORT || `${DEFAULT_DB_PORT}`, 10),
     auth_base : process.env.MONGO_AUTH_BASE,
     db_name: process.env.MONGO_DB,
     user: process.env.MONGO_USER,

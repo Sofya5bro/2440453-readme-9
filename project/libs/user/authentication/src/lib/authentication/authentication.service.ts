@@ -1,5 +1,7 @@
 import dayjs from 'dayjs';
-import { ConflictException } from '@nestjs/common';
+import { ConflictException, Inject } from '@nestjs/common';
+import { ConfigType } from '@nestjs/config';
+import { dbConfig } from '@project/user-config';
 
 import { UserEntity, UserRepository } from '@project/readme-user';
 import { CreateUserDto } from '../dto/create-user.dto';
@@ -9,8 +11,12 @@ import { ChangeUserPasswordDto } from '../dto/change-user-password.dto';
 
 export class AuthenticationService {
     constructor (
-        private readonly userRepository : UserRepository 
-    ) {}
+        private readonly userRepository : UserRepository, 
+
+        @Inject(dbConfig.KEY)
+        private readonly databaseConfig : ConfigType<typeof dbConfig>)
+        {
+        }
 
     public async register(dto: CreateUserDto) : Promise<UserEntity> {
         const {email, fullName, password, dateOfBirth, profileImage} = dto;
