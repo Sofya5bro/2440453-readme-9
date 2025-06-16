@@ -1,6 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
+import  applicationConfig from './configurations/app.config';
+import dbConfig from './configurations/mongo.config';
+
+
 const ENV_USER_FILE_PATH = 'apps/user/user.env';
 
 @Module({
@@ -8,7 +12,7 @@ const ENV_USER_FILE_PATH = 'apps/user/user.env';
     ConfigModule.forRoot({
       isGlobal: true,
       cache: true,
-      load: [],
+      load: [applicationConfig, dbConfig],
       envFilePath: ENV_USER_FILE_PATH,
     })
   ],
