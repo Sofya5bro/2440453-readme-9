@@ -10,3 +10,4 @@
 coverage
 *.log
 *.env
+*docker*.yml
